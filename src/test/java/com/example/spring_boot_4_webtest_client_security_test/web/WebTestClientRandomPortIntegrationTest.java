@@ -25,8 +25,9 @@ import com.example.spring_boot_4_webtest_client_security_test.config.SecurityCon
  * - Case 6 - WebTestClient mutateWith mock user -> should throw NullPointerException
  */
 @SpringBootTest
+	(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
-class WebTestClientIntegrationTest
+class WebTestClientRandomPortIntegrationTest
 {
 	private static final String ENDPOINT = ExampleController.ENDPOINT;
 	private static final String EXPECTED_BODY = "Hello World";
