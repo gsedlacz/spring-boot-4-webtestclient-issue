@@ -26,7 +26,7 @@ import com.example.spring_boot_4_webtest_client_security_test.config.SecurityCon
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-class ExampleControllerITest
+class MockMvcIntegrationTest
 {
 	private static final String ENDPOINT = ExampleController.ENDPOINT;
 	private static final String EXPECTED_BODY = "Hello World";

@@ -20,7 +20,7 @@ import com.example.spring_boot_4_webtest_client_security_test.config.SecurityCon
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
-class ExampleControllerWebTestClientITest
+class WebTestClientIntegrationTest
 {
 	private static final String ENDPOINT = ExampleController.ENDPOINT;
 	private static final String EXPECTED_BODY = "Hello World";
@@ -36,13 +36,16 @@ class ExampleControllerWebTestClientITest
 	void givenAuthenticatedUserWithCorrectRole_whenGetExample_thenReturnsOkWithBody()
 	{
 		// given & when & then
-		webTestClient.get().uri(ENDPOINT)
+		webTestClient.get()
+			.uri(ENDPOINT)
 			.headers(headers -> headers.setBasicAuth(
 				SecurityConfiguration.SECRET_ADMIN,
 				SecurityConfiguration.SECRET_ADMIN))
 			.exchange()
-			.expectStatus().isOk()
-			.expectBody(String.class).isEqualTo(EXPECTED_BODY);
+			.expectStatus()
+			.isOk()
+			.expectBody(String.class)
+			.isEqualTo(EXPECTED_BODY);
 	}
 
 	/**
@@ -52,9 +55,11 @@ class ExampleControllerWebTestClientITest
 	void givenUnauthenticatedRequest_whenGetExample_thenReturnsUnauthorized()
 	{
 		// when & then
-		webTestClient.get().uri(ENDPOINT)
+		webTestClient.get()
+			.uri(ENDPOINT)
 			.exchange()
-			.expectStatus().isUnauthorized();
+			.expectStatus()
+			.isUnauthorized();
 	}
 
 	/**
@@ -65,9 +70,11 @@ class ExampleControllerWebTestClientITest
 	void givenAuthenticatedUserWithWrongRole_whenGetExample_thenReturnsForbidden()
 	{
 		// when & then
-		webTestClient.get().uri(ENDPOINT)
+		webTestClient.get()
+			.uri(ENDPOINT)
 			.exchange()
-			.expectStatus().isForbidden();
+			.expectStatus()
+			.isForbidden();
 	}
 
 	/**
@@ -78,9 +85,12 @@ class ExampleControllerWebTestClientITest
 	void givenMockUserWithCorrectRole_whenGetExample_thenReturnsOkWithBody()
 	{
 		// when & then
-		webTestClient.get().uri(ENDPOINT)
+		webTestClient.get()
+			.uri(ENDPOINT)
 			.exchange()
-			.expectStatus().isOk()
-			.expectBody(String.class).isEqualTo(EXPECTED_BODY);
+			.expectStatus()
+			.isOk()
+			.expectBody(String.class)
+			.isEqualTo(EXPECTED_BODY);
 	}
 }
