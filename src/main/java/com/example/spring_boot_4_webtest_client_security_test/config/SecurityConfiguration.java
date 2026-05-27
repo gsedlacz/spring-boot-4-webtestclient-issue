@@ -21,17 +21,20 @@ public class SecurityConfiguration
 	public static final String SECRET_ADMIN = "admin";
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) {
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
+	{
 		http
 			// require all requests to be authenticated
-			.authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
+			.authorizeHttpRequests(authorize -> authorize.anyRequest()
+				.authenticated())
 			// enable basic auth
 			.httpBasic(Customizer.withDefaults());
 		return http.build();
 	}
 
 	@Bean
-	public UserDetailsService userDetailsService() {
+	public UserDetailsService userDetailsService()
+	{
 		var admin = User.withDefaultPasswordEncoder()
 			.username(SECRET_ADMIN)
 			.password(SECRET_ADMIN)

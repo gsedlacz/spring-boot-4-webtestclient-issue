@@ -5,10 +5,10 @@ import static com.example.spring_boot_4_webtest_client_security_test.config.Secu
 
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers;
 
@@ -25,7 +25,7 @@ import com.example.spring_boot_4_webtest_client_security_test.config.SecurityCon
  * - Case 6 - WebTestClient mutateWith mock user -> should throw NullPointerException
  */
 @SpringBootTest
-@AutoConfigureWebTestClient
+@AutoConfigureMockMvc
 class WebTestClientIntegrationTest
 {
 	private static final String ENDPOINT = ExampleController.ENDPOINT;
