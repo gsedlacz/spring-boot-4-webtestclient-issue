@@ -1,0 +1,6 @@
+### Endpoint witout authentication -> 401
+GET http://localhost:8080/example
+
+### Endpoint with authentication (admin:admin) -> 200
+GET http://localhost:8080/example
+Authorization: Basic YWRtaW46YWRtaW4=
