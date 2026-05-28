@@ -24,7 +24,7 @@ import com.example.spring_boot_4_webtest_client_security_test.config.SecurityCon
  * - Case 3 - authenticated user without role MY_USER -> should return 403
  * - Case 4 - @WithMockUser with role MY_USER -> should return 200 with body
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest
 @AutoConfigureMockMvc
 class MockMvcIntegrationTest
 {
